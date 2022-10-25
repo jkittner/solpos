@@ -1,0 +1,8 @@
+*.egg-info
+*.o
+*.pyc
+*.so
+.coverage
+.tox
+.vscode
+htmlcov

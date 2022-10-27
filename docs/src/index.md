@@ -1,11 +1,24 @@
-[![ci](https://github.com/theendlessriver13/solpos/actions/workflows/CI.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/CI.yaml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/theendlessriver13/solpos/master.svg)](https://results.pre-commit.ci/latest/github/theendlessriver13/solpos/master)
+# Welcome to solpos documentation!
 
-# solpos
+This is a thin wrapper around [NREL](https://www.nrel.gov/)'s [SOLPOS 2.0](https://www.nrel.gov/), exposing the `S_solpos` C-function to python as {func}`solpos.solpos`. All possible outputs are calculated, and exposed via the {func}`solpos.SolposResult` NamedTuple-object, so they can be accessed as an attribute.
 
-This library wraps [NREL](https://www.nrel.gov/)'s [SOLPOS 2.0](https://www.nrel.gov/grid/solar-resource/solpos.html) and makes it accessible from python.
+**NREL's description:**
 
-The SOLPOS code was vendored from: [NREL/SolarPILOT](https://github.com/NREL/SolarPILOT/tree/21a1466398ec22db24a5a838e5133da58e347b83) which is licensed under a [mixed MIT and GPLv3license](licenses/LICENSE_SolarPILOT).
+> NREL's Solar Position and Intensity (SOLPOS 2.0) C function calculates the apparent solar position and intensity (theoretical maximum solar energy) based on date, time, and location on Earth.
+
+- **solpos** on GitHub: [https://github.com/theendlessriver13/solpos](https://github.com/theendlessriver13/solpos)
+- NREL's **SOLPOS 2.0**: [https://www.nrel.gov/grid/solar-resource/solpos.html](https://www.nrel.gov/grid/solar-resource/solpos.html)
+- NREL's Disclaimer: [https://www.nrel.gov/disclaimer.html](https://www.nrel.gov/disclaimer.html)
+
+## Contents
+
+```{toctree}
+---
+maxdepth: 2
+---
+
+solpos.md
+```
 
 ## Installation
 
@@ -15,7 +28,7 @@ To install **solpos**, open an interactive shell and run
 pip install solpos
 ```
 
-## Gettings Started
+### Gettings Started
 
 ```python
 from solpos import solpos
@@ -45,9 +58,18 @@ print(results.sbcf)
 1.093388319015503
 ```
 
-## [Docs](https://theendlessriver13.github.io/solpos/)
+For a detailed description of all (calculated) attributes see: {func}`solpos.SolposResult`.
 
-For a detailed description of all (calculated) attributes see [the docs](https://theendlessriver13.github.io/solpos/).
+### Accuracy
+
+The python version wrapping the C-function is tested for accuracy against running the pure C-version and NREL's [SOLPOS online calculator](https://midcdmz.nrel.gov/solpos/solpos.html)
+
+- against the online calculator: {math}`\pm 1 * 10^{-4}`
+- against the pure C-Version: {math}`\pm 1 * 10^{-6}`
+
+### License
+
+The project is licesned under the [MIT License](https://github.com/theendlessriver13/solpos/blob/master/LICENSE) and vendors **SOLPOS 2.0** via [SolarPILOT](https://github.com/NREL/SolarPILOT/tree/21a1466398ec22db24a5a838e5133da58e347b83/solpos) which is licensed under a [mixed MIT and GPLv3 license](https://github.com/NREL/SolarPILOT/blob/21a1466398ec22db24a5a838e5133da58e347b83/LICENSE.md) and *[...] allows for-profit and not-for-profit organizations to develop and redistribute software based on SolarPILOT under terms of an MIT license*.
 
 ### References
 
@@ -85,3 +107,8 @@ Perez, R., P. Ineichen, Seals, R., & Zelenka, A. 1990. Making full use of the cl
 **Solar Position Relative to Earth**
 
 Iqbal, M. 1983. _An Introduction to Solar Radiation_. Academic Press, NY.
+
+## Indices and tables
+
+- {ref}`genindex`
+- {ref}`search`

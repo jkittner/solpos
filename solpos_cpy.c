@@ -1,63 +1,100 @@
 #include <Python.h>
 #include "solpos00.h"
 
-static PyObject *decode(long code, struct posdata *pdat)
+static PyObject *decode_error(long code, struct posdata *pdat)
 {
     if (code & (1L << S_YEAR_ERROR))
     {
-        PyErr_Format(PyExc_ValueError, "Please fix the year: %d [1950-2050]\n", pdat->year);
+        PyErr_Format(PyExc_ValueError, "Please fix the year: %d (allowed range: [1950-2050])\n", pdat->year);
+        return NULL;
     }
-    //   if ( code & (1L << S_MONTH_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the month: %d\n",
-    //       pdat->month);
-    //   if ( code & (1L << S_DAY_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the day-of-month: %d\n",
-    //       pdat->day);
-    //   if ( code & (1L << S_DOY_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the day-of-year: %d\n",
-    //       pdat->daynum);
-    //   if ( code & (1L << S_HOUR_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the hour: %d\n",
-    //       pdat->hour);
-    //   if ( code & (1L << S_MINUTE_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the minute: %d\n",
-    //       pdat->minute);
-    //   if ( code & (1L << S_SECOND_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the second: %d\n",
-    //       pdat->second);
-    //   if ( code & (1L << S_TZONE_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the time zone: %f\n",
-    //       pdat->timezone);
-    //   if ( code & (1L << S_INTRVL_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the interval: %d\n",
-    //       pdat->interval);
-    //   if ( code & (1L << S_LAT_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the latitude: %f\n",
-    //       pdat->latitude);
-    //   if ( code & (1L << S_LON_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the longitude: %f\n",
-    //       pdat->longitude);
-    //   if ( code & (1L << S_TEMP_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the temperature: %f\n",
-    //       pdat->temp);
-    //   if ( code & (1L << S_PRESS_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the pressure: %f\n",
-    //       pdat->press);
-    //   if ( code & (1L << S_TILT_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the tilt: %f\n",
-    //       pdat->tilt);
-    //   if ( code & (1L << S_ASPECT_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the aspect: %f\n",
-    //       pdat->aspect);
-    //   if ( code & (1L << S_SBWID_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the shadowband width: %f\n",
-    //       pdat->sbwid);
-    //   if ( code & (1L << S_SBRAD_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the shadowband radius: %f\n",
-    //       pdat->sbrad);
-    //   if ( code & (1L << S_SBSKY_ERROR) )
-    //     fprintf(stderr, "S_decode ==> Please fix the shadowband sky factor: %f\n",
-    //       pdat->sbsky);
+    if (code & (1L << S_MONTH_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the month: %d (allowed range: [1-12])\n", pdat->month);
+        return NULL;
+    }
+    if (code & (1L << S_DAY_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the day-of-month: %d (allowed range: [1-31])\n", pdat->day);
+        return NULL;
+    }
+    if (code & (1L << S_DOY_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the day-of-year: %d (allowed range: [1-366])\n", pdat->daynum);
+        return NULL;
+    }
+    if (code & (1L << S_HOUR_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the hour: %d (allowed range: [0-24])\n", pdat->hour);
+        return NULL;
+    }
+    if (code & (1L << S_MINUTE_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the minute: %d (allowed range: [0-59])\n", pdat->minute);
+        return NULL;
+    }
+    if (code & (1L << S_SECOND_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the second: %d (allowed range: [0-59])\n", pdat->second);
+        return NULL;
+    }
+    if (code & (1L << S_TZONE_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the time zone (allowed range: [-12-12])\n");
+        return NULL;
+    }
+    if (code & (1L << S_INTRVL_ERROR))
+    {
+        PyErr_Format(PyExc_ValueError, "Please fix the interval: %d (allowed range: [0-28800])\n", pdat->interval);
+        return NULL;
+    }
+    if (code & (1L << S_LAT_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the latitude (allowed range: [-90-90])\n");
+        return NULL;
+    }
+    if (code & (1L << S_LON_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the longitude (allowed range: [-180-180])\n");
+        return NULL;
+    }
+    if (code & (1L << S_TEMP_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the temperature (allowed range: [-100-100])\n");
+        return NULL;
+    }
+    if (code & (1L << S_PRESS_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the pressure (allowed range: [0-2000])\n");
+        return NULL;
+    }
+    if (code & (1L << S_TILT_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the tilt (allowed range: [-180-180])\n");
+        return NULL;
+    }
+    if (code & (1L << S_ASPECT_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the aspect (allowed range: [-360-360])\n");
+        return NULL;
+    }
+    if (code & (1L << S_SBWID_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the shadowband width (allowed range: [1-100])\n");
+        return NULL;
+    }
+    if (code & (1L << S_SBRAD_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the shadowband radius (allowed range: [1-100])\n");
+        return NULL;
+    }
+    if (code & (1L << S_SBSKY_ERROR))
+    {
+        PyErr_SetString(PyExc_ValueError, "Please fix the shadowband sky factor (allowed range: [-1-1])\n");
+        return NULL;
+    }
+
+    PyErr_Format(PyExc_NotImplementedError, "Did not find the cause of the exception. This is most likely a bug: %ld", code);
     return NULL;
 }
 
@@ -119,7 +156,13 @@ static PyObject *_solpos(PyObject *self, PyObject *args, PyObject *kwargs)
     pdat->tilt = tilt;
 
     long retval = S_solpos(pdat);
-    decode(retval, pdat);
+    // something went wrong, get the error from SOLPOS and raise it
+    if (retval != 0)
+    {
+        decode_error(retval, pdat);
+        // return NULL to indicate python an error happened since PyObject can't be NULL
+        return NULL;
+    }
     return Py_BuildValue("{s:i,s:i,s:i,s:i,s:i,s:i,s:f,s:i,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f,s:f}",
                          "year", pdat->year,
                          "month", pdat->month,

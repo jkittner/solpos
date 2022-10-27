@@ -18,10 +18,3 @@ jobs:
       run: pip install --upgrade tox
     - name: build docs
       run: tox -e docs
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v3
-      if: github.ref == 'refs/heads/$default-branch'
-      with:
-        name: built docs
-        path: _build
-        retention-days: 10

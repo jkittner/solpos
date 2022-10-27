@@ -44,7 +44,7 @@ results = solpos(
     latitude=51.44579,
     longitude=7.26274,
 )
-# solar elevation angle refreacted
+# solar elevation angle refracted
 print(results.elevref)
 # solar declination
 print(results.declin)

@@ -95,7 +95,7 @@ enum {S_YEAR_ERROR,    /*  0   year                  1950 -  2050   */
       S_LON_ERROR,     /* 10   longitude             -180 -   180   */
       S_TEMP_ERROR,    /* 11   temperature (deg. C)  -100 -   100   */
       S_PRESS_ERROR,   /* 12   pressure (millibars)     0 -  2000   */
-      S_TILT_ERROR,    /* 13   tilt                   -90 -    90   */
+      S_TILT_ERROR,    /* 13   tilt                  -180 -   180   */
       S_ASPECT_ERROR,  /* 14   aspect                -360 -   360   */
       S_SBWID_ERROR,   /* 15   shadow band width (cm)   1 -   100   */
       S_SBRAD_ERROR,   /* 16   shadow band radius (cm)  1 -   100   */

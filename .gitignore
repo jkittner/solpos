@@ -5,4 +5,5 @@
 .coverage
 .tox
 .vscode
+_build
 htmlcov

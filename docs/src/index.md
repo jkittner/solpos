@@ -33,7 +33,7 @@ pip install solpos
 ```python
 from solpos import solpos
 
-results = solpos(
+result = solpos(
     year=2022,
     month=10,
     day=27,
@@ -45,11 +45,11 @@ results = solpos(
     longitude=7.26274,
 )
 # solar elevation angle refracted
-print(results.elevref)
+print(result.elevref)
 # solar declination
-print(results.declin)
+print(result.declin)
 # shadow band correction factor
-print(results.sbcf)
+print(result.sbcf)
 ```
 
 ```console

@@ -182,7 +182,7 @@ def solpos(
     :return: A :func:`solpos.SolposResult` object with all parameters that
         SOLPOS is able to calculate (including all input parameters)
     """
-    restult = _solpos(
+    result = _solpos(
         year=year,
         month=month,
         day=day,
@@ -202,4 +202,4 @@ def solpos(
         temp=temp,
         tilt=tilt,
     )
-    return SolposResult(**restult)
+    return SolposResult(**result)

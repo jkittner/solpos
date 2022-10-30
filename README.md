@@ -1,4 +1,4 @@
-[![ci](https://github.com/theendlessriver13/solpos/actions/workflows/CI.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/CI.yaml)
+[![ci](https://github.com/theendlessriver13/solpos/actions/workflows/ci.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/ci.yaml)
 [![wheels](https://github.com/theendlessriver13/solpos/actions/workflows/wheels.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/wheels.yaml)
 [![docs](https://github.com/theendlessriver13/solpos/actions/workflows/docs.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/docs.yaml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/theendlessriver13/solpos/master.svg)](https://results.pre-commit.ci/latest/github/theendlessriver13/solpos/master)

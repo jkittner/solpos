@@ -3,7 +3,8 @@
 
 #include "solpos00.h"
 
-int main()
+int
+main()
 {
     struct posdata pd, *pdat;
     pdat = &pd;
@@ -27,8 +28,7 @@ int main()
     FILE *fptr;
     const char *fname = "c_output.txt";
     fptr = fopen("c_output.txt", "w");
-    if (fptr == NULL)
-    {
+    if (fptr == NULL) {
         printf("Error opening file: %s\n", fname);
         exit(1);
     }

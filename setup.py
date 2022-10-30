@@ -21,7 +21,7 @@ setup(
     ext_modules=[
         Extension(
             name='_solpos',
-            sources=['solpos_cpy.c', 'solpos.c'],
+            sources=['_solpos.c', 'solpos.c'],
             py_limited_api=True,
             define_macros=[('Py_LIMITED_API', None)],
         ),

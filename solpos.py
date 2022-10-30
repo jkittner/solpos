@@ -4,12 +4,12 @@ from _solpos import _solpos
 
 
 class SolposResult(NamedTuple):
-    r"""Container for the results returned by :func:`solpos.solpos`.
+    """Container for the results returned by :func:`solpos.solpos`.
 
     :param year: 4-digit year
     :param month: Month number (Jan = 1, Feb = 2, etc.)
     :param day: Day of month (May 27 = 27, etc.)
-    :param hour: Hour of day, 0 — 24. (Time 24:00:00 is treated internally as
+    :param hour: Hour of day, 0 - 24. (Time 24:00:00 is treated internally as
         time 00:00:00 of the following day.)
     :param minute: Minute of hour, 0 - 59
     :param second: Second of minute, 0 - 59
@@ -31,7 +31,7 @@ class SolposResult(NamedTuple):
     :param azim: Solar azimuth angle (*degrees*): N=0, E=90, S=180,W=270
     :param cosinc: Cosine of solar incidence angle on panel
     :param coszen: Cosine of refraction corrected solar zenith angle
-    :param dayang: Day angle :math:`\frac{daynum * 360}{year\_length}`, *degrees*
+    :param dayang: Day angle :math:`\\frac{daynum * 360}{year\\_length}`, *degrees*
     :param declin: Declination-zenith angle of solar noon at equator *degrees NORTH*
     :param eclong: Ecliptic longitude, *degrees*
     :param ecobli: Obliquity of ecliptic
@@ -132,6 +132,7 @@ def solpos(
         minute: int,
         second: int,
         timezone: float,
+        *,
         latitude: float,
         longitude: float,
         interval: int = 0,
@@ -153,7 +154,7 @@ def solpos(
     :param year: 4-digit year (2-digit years are **NOT** allowed)
     :param month: Month number (Jan = 1, Feb = 2, etc.)
     :param day: Day of month (May 27 = 27, etc.)
-    :param hour: Hour of day, 0 — 24. (Time 24:00:00 is treated internally as
+    :param hour: Hour of day, 0 - 24. (Time 24:00:00 is treated internally as
         time 00:00:00 of the following day.)
     :param minute: Minute of hour, 0 - 59
     :param second: Second of minute, 0 - 59

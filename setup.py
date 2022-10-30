@@ -4,7 +4,7 @@ import sys
 from setuptools import Extension
 from setuptools import setup
 
-if sys.version_info >= (3,) and platform.python_implementation() == 'CPython':
+if platform.python_implementation() == 'CPython':
     try:
         import wheel.bdist_wheel
     except ImportError:

@@ -4,7 +4,7 @@ import sys
 from setuptools import Extension
 from setuptools import setup
 
-if sys.version_info >= (3,) and platform.python_implementation() == 'CPython':
+if platform.python_implementation() == 'CPython':
     try:
         import wheel.bdist_wheel
     except ImportError:
@@ -21,7 +21,7 @@ setup(
     ext_modules=[
         Extension(
             name='_solpos',
-            sources=['solpos_cpy.c', 'solpos.c'],
+            sources=['_solpos.c', 'solpos.c'],
             py_limited_api=True,
             define_macros=[('Py_LIMITED_API', None)],
         ),

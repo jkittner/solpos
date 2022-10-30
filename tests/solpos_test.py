@@ -143,7 +143,8 @@ def test_solpos_invalid_year(solpos_fun, year):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(year=year)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         f'Please fix the year: {year} (allowed range: [1950-2050])\n'
     )
 
@@ -153,9 +154,8 @@ def test_solpos_invalid_month(solpos_fun, month):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(month=month)
 
-    assert exc_info.value.args[0] == (
-        f'Please fix the month: {month} (allowed range: [1-12])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == (f'Please fix the month: {month} (allowed range: [1-12])\n')
 
 
 @pytest.mark.parametrize('day', (0, -1, 32))
@@ -163,7 +163,8 @@ def test_solpos_invalid_day(solpos_fun, day):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(day=day)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         f'Please fix the day-of-month: {day} (allowed range: [1-31])\n'
     )
 
@@ -173,9 +174,8 @@ def test_solpos_invalid_hour(solpos_fun, hour):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(hour=hour)
 
-    assert exc_info.value.args[0] == (
-        f'Please fix the hour: {hour} (allowed range: [0-24])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == (f'Please fix the hour: {hour} (allowed range: [0-24])\n')
 
 
 @pytest.mark.parametrize('minute', (-1, 60))
@@ -183,7 +183,8 @@ def test_solpos_invalid_minute(solpos_fun, minute):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(minute=minute)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         f'Please fix the minute: {minute} (allowed range: [0-59])\n'
     )
 
@@ -193,7 +194,8 @@ def test_solpos_invalid_second(solpos_fun, second):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(second=second)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         f'Please fix the second: {second} (allowed range: [0-59])\n'
     )
 
@@ -203,9 +205,8 @@ def test_solpos_invalid_timezone(solpos_fun, timezone):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(timezone=timezone)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the time zone (allowed range: [-12-12])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the time zone (allowed range: [-12-12])\n')
 
 
 @pytest.mark.parametrize('interval', (-1, 28801))
@@ -213,7 +214,8 @@ def test_solpos_invalid_interval(solpos_fun, interval):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(interval=interval)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         f'Please fix the interval: {interval} (allowed range: [0-28800])\n'
     )
 
@@ -223,9 +225,8 @@ def test_solpos_invalid_latitude(solpos_fun, latitude):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(latitude=latitude)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the latitude (allowed range: [-90-90])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the latitude (allowed range: [-90-90])\n')
 
 
 @pytest.mark.parametrize('longitude', (-180.01, 180.01))
@@ -233,9 +234,8 @@ def test_solpos_invalid_longitude(solpos_fun, longitude):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(longitude=longitude)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the longitude (allowed range: [-180-180])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the longitude (allowed range: [-180-180])\n')
 
 
 @pytest.mark.parametrize('temp', (-101, 101))
@@ -243,9 +243,8 @@ def test_solpos_invalid_temp(solpos_fun, temp):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(temp=temp)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the temperature (allowed range: [-100-100])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the temperature (allowed range: [-100-100])\n')
 
 
 @pytest.mark.parametrize('press', (-1, 20001))
@@ -253,9 +252,8 @@ def test_solpos_invalid_press(solpos_fun, press):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(press=press)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the pressure (allowed range: [0-2000])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the pressure (allowed range: [0-2000])\n')
 
 
 @pytest.mark.parametrize('tilt', (-181, 181))
@@ -263,9 +261,8 @@ def test_solpos_invalid_tilt(solpos_fun, tilt):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(tilt=tilt)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the tilt (allowed range: [-180-180])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the tilt (allowed range: [-180-180])\n')
 
 
 @pytest.mark.parametrize('aspect', (-361, 361))
@@ -273,9 +270,8 @@ def test_solpos_invalid_aspect(solpos_fun, aspect):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(aspect=aspect)
 
-    assert exc_info.value.args[0] == (
-        'Please fix the aspect (allowed range: [-360-360])\n'
-    )
+    msg, = exc_info.value.args
+    assert msg == ('Please fix the aspect (allowed range: [-360-360])\n')
 
 
 @pytest.mark.parametrize('sbwid', (0, 101))
@@ -283,7 +279,8 @@ def test_solpos_invalid_sbwid(solpos_fun, sbwid):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(sbwid=sbwid)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         'Please fix the shadowband width (allowed range: [1-100])\n'
     )
 
@@ -293,7 +290,8 @@ def test_solpos_invalid_sbrad(solpos_fun, sbrad):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(sbrad=sbrad)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         'Please fix the shadowband radius (allowed range: [1-100])\n'
     )
 
@@ -303,6 +301,7 @@ def test_solpos_invalid_sbsky(solpos_fun, sbsky):
     with pytest.raises(ValueError) as exc_info:
         solpos_fun(sbsky=sbsky)
 
-    assert exc_info.value.args[0] == (
+    msg, = exc_info.value.args
+    assert msg == (
         'Please fix the shadowband sky factor (allowed range: [-1-1])\n'
     )

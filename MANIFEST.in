@@ -1,1 +1,2 @@
 include solpos00.h
+include _solpos.pyi

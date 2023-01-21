@@ -1,7 +1,7 @@
-[![ci](https://github.com/theendlessriver13/solpos/actions/workflows/ci.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/ci.yaml)
-[![wheels](https://github.com/theendlessriver13/solpos/actions/workflows/wheels.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/wheels.yaml)
-[![docs](https://github.com/theendlessriver13/solpos/actions/workflows/docs.yaml/badge.svg)](https://github.com/theendlessriver13/solpos/actions/workflows/docs.yaml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/theendlessriver13/solpos/master.svg)](https://results.pre-commit.ci/latest/github/theendlessriver13/solpos/master)
+[![ci](https://github.com/jkittner/solpos/actions/workflows/ci.yaml/badge.svg)](https://github.com/jkittner/solpos/actions/workflows/ci.yaml)
+[![wheels](https://github.com/jkittner/solpos/actions/workflows/wheels.yaml/badge.svg)](https://github.com/jkittner/solpos/actions/workflows/wheels.yaml)
+[![docs](https://github.com/jkittner/solpos/actions/workflows/docs.yaml/badge.svg)](https://github.com/jkittner/solpos/actions/workflows/docs.yaml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jkittner/solpos/master.svg)](https://results.pre-commit.ci/latest/github/jkittner/solpos/master)
 
 # solpos
 
@@ -47,9 +47,9 @@ print(result.sbcf)
 1.093388319015503
 ```
 
-## [Docs](https://theendlessriver13.github.io/solpos/)
+## [Docs](https://jkittner.github.io/solpos/)
 
-For a detailed description of all (calculated) attributes see [the docs](https://theendlessriver13.github.io/solpos/).
+For a detailed description of all (calculated) attributes see [the docs](https://jkittner.github.io/solpos/).
 
 ### References
 

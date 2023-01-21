@@ -1,7 +1,7 @@
 project = 'solpos'
 copyright = '2022, Jonas Kittner'
 author = 'Jonas Kittner'
-release = '0.1.1'
+release = '0.1.2'
 
 extensions = [
     'myst_parser',

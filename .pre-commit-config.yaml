@@ -28,12 +28,12 @@ repos:
     hooks:
     -   id: autopep8
 -   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.9.0
+    rev: v3.10.0
     hooks:
     -   id: reorder-python-imports
         args: [--py37-plus]
 -   repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.4.0
+    rev: v3.0.0
     hooks:
     -   id: add-trailing-comma
         args: [--py36-plus]
@@ -42,20 +42,20 @@ repos:
     hooks:
       - id: double-indent
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.4.0
+    rev: v3.8.0
     hooks:
     -   id: pyupgrade
         args: [--py37-plus]
 -   repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v2.3.0
+    rev: v2.4.0
     hooks:
     -   id: setup-cfg-fmt
 -   repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: 'v16.0.4'
+    rev: 'v16.0.6'
     hooks:
     -   id: clang-format
         exclude: ^solpos(00)?.(c|h)
 -   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.3.0
+    rev: v1.4.1
     hooks:
     -   id: mypy
